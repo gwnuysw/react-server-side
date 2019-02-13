@@ -7,9 +7,21 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _MyName = _interopRequireDefault(require("./MyName.js"));
+
+var _counter = _interopRequireDefault(require("./counter.js"));
+
+var _PhoneForm = _interopRequireDefault(require("./PhoneForm.js"));
+
+var _PhoneInfoList = _interopRequireDefault(require("./PhoneInfoList.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -19,14 +31,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//jsx 를 사용하려명 꼭 react를 임포트 해야헌다.
 var Logo = function Logo(props) {
   return _react.default.createElement("svg", props, _react.default.createElement("g", {
     fill: "#61DAFB"
@@ -50,14 +65,83 @@ function (_Component) {
   _inherits(App, _Component);
 
   function App() {
+    var _getPrototypeOf2;
+
+    var _this;
+
     _classCallCheck(this, App);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(App).apply(this, arguments));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(App)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "id", 2);
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+      information: [{
+        id: 0,
+        name: '김민준',
+        phone: '010-0000-0000'
+      }, {
+        id: 1,
+        name: '홍길동',
+        phone: '010-0000-0001'
+      }],
+      keyword: ''
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleChange", function (e) {
+      _this.setState({
+        keyword: e.target.value
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleCreate", function (data) {
+      var information = _this.state.information;
+
+      _this.setState({
+        information: information.concat(_objectSpread({
+          id: _this.id++
+        }, data))
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleRemove", function (id) {
+      var information = _this.state.information;
+
+      _this.setState({
+        information: information.filter(function (info) {
+          return info.id !== id;
+        })
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleUpdate", function (id, data) {
+      var information = _this.state.information;
+
+      _this.setState({
+        information: information.map(function (info) {
+          return id === info.id ? _objectSpread({}, info, data) // 새 객체를 만들어서 기존의 값과 전달받은 data 을 덮어씀
+          : info;
+        } // 기존의 값을 그대로 렌더링
+        )
+      });
+    });
+
+    return _this;
   }
 
   _createClass(App, [{
     key: "render",
     value: function render() {
+      var _this$state = this.state,
+          information = _this$state.information,
+          keyword = _this$state.keyword;
+      var filteredList = information.filter(function (info) {
+        return info.name.indexOf(keyword) !== -1;
+      });
       return _react.default.createElement("div", {
         className: "App"
       }, _react.default.createElement("header", {
@@ -65,7 +149,17 @@ function (_Component) {
       }, _react.default.createElement(Logo, {
         className: "App-logo",
         alt: "logo"
-      }), _react.default.createElement("p", null, "Edit ", _react.default.createElement("code", null, "src/App.js"), " and save to reload."), _react.default.createElement("a", {
+      }), _react.default.createElement("p", null, "Edit ", _react.default.createElement("code", null, "src/App.js"), " and save to reload."), _react.default.createElement(_PhoneForm.default, {
+        onCreate: this.handleCreate
+      }), _react.default.createElement("p", null, _react.default.createElement("input", {
+        placeholder: "\uAC80\uC0C9 \uD560 \uC774\uB984\uC744 \uC785\uB825\uD558\uC138\uC694..",
+        onChange: this.handleChange,
+        value: keyword
+      })), _react.default.createElement("hr", null), _react.default.createElement(_PhoneInfoList.default, {
+        data: information,
+        onRemove: this.handleRemove,
+        onUpdate: this.handleUpdate
+      }), JSON.stringify(this.state.information), _react.default.createElement("a", {
         className: "App-link",
         href: "https://reactjs.org",
         target: "_blank",
