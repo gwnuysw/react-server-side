@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Button } from 'reactstrap';
 class Counter extends Component {
   state = {
     number: 0
@@ -51,8 +51,8 @@ class Counter extends Component {
       <div>
         <h1>카운터</h1>
         <div>값: {this.state.number}</div>
-        <button onClick={this.handleIncrease}>+</button>
-        <button onClick={this.handleDecrease}>-</button>
+        <Button onClick={this.handleIncrease}>+</Button>
+        <Button onClick={this.handleDecrease}>-</Button>
       </div>
     );
   }

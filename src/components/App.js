@@ -5,6 +5,7 @@ import MyName from './MyName.js';
 import Counter from './counter.js';
 import PhoneForm from './PhoneForm.js';
 import PhoneInfoList from './PhoneInfoList.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
 class App extends Component {
   id = 2
   state = {
@@ -49,6 +50,7 @@ class App extends Component {
       )
     })
   }
+
   render() {
     const { information, keyword } = this.state;
     const filteredList = information.filter(
@@ -59,7 +61,7 @@ class App extends Component {
         <header className="App-header">
           <Logo className="App-logo" alt="logo" />
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            {this.state.name} Edit <code>src/App.js</code> and save to reload.
           </p>
           {/*<MyName />
           <Counter />*/}

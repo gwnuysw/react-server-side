@@ -7,6 +7,8 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _reactstrap = require("reactstrap");
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -87,7 +89,7 @@ function (_Component) {
         value: this.state.phone,
         onChange: this.handleChange,
         name: "phone"
-      }), _react.default.createElement("div", null, this.state.name, " ", this.state.phone), _react.default.createElement("button", {
+      }), _react.default.createElement("div", null, this.state.name, " ", this.state.phone), _react.default.createElement(_reactstrap.Button, {
         type: "submit"
       }, "\uB4F1\uB85D"));
     }

@@ -149,7 +149,7 @@ function (_Component) {
       }, _react.default.createElement(Logo, {
         className: "App-logo",
         alt: "logo"
-      }), _react.default.createElement("p", null, "Edit ", _react.default.createElement("code", null, "src/App.js"), " and save to reload."), _react.default.createElement(_PhoneForm.default, {
+      }), _react.default.createElement("p", null, this.state.name, " Edit ", _react.default.createElement("code", null, "src/App.js"), " and save to reload."), _react.default.createElement(_PhoneForm.default, {
         onCreate: this.handleCreate
       }), _react.default.createElement("p", null, _react.default.createElement("input", {
         placeholder: "\uAC80\uC0C9 \uD560 \uC774\uB984\uC744 \uC785\uB825\uD558\uC138\uC694..",

@@ -1,6 +1,6 @@
 // file: src/components/PhoneForm.js
 import React, { Component } from 'react';
-
+import { Button } from 'reactstrap';
 class PhoneForm extends Component {
   state = {
     name: '',
@@ -38,7 +38,7 @@ class PhoneForm extends Component {
           name="phone"
         />
         <div>{this.state.name} {this.state.phone}</div>
-        <button type="submit">등록</button>
+        <Button type="submit">등록</Button>
       </form>
     );
   }
